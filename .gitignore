@@ -1,0 +1,45 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Native build outputs
+ibnr_bootstrap
+ibnr_bootstrap_odp
+rng_test
+*.o
+*.out
+
+# Generated project artifacts
+triangles.bin
+premiums.bin
+companies.txt
+tri_meta.txt
+ibnr_samples.bin
+ibnr_odp_samples.bin
+ibnr_summary.csv
+ibnr_odp_summary.csv
+ibnr_validation.csv
+ibnr_odp_validation.csv
+data/
+results/
+
+# Scratch or legacy generated market-data artifacts
+returns.bin
+true_params.bin
+real_returns.bin
+real_meta.txt
+real_tickers.txt
+meta.txt
+stooq_us/
+
+# Local editor/agent state
+.agents/
+.codex/
+.vscode/
+.idea/
+.DS_Store
