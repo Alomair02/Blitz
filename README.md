@@ -29,6 +29,7 @@ GPU parallelism, and reproducible reserve validation.
 | `ibnr_bootstrap_odp.hip` | Overdispersed Poisson bootstrap kernel with residual resampling. |
 | `validate_ibnr.py` | Validates naive bootstrap samples against realized lower-triangle outcomes. |
 | `validate_odp.py` | Validates ODP bootstrap samples and reports reserve adequacy metrics. |
+| `linkedin_charts.py` | Produces polished Matplotlib/Seaborn charts for portfolio posts. |
 | `rng_test.hip` | Small ROCm random-number sanity check. |
 | `ppauto.csv`, `comauto.csv` | Source Schedule P auto-line triangle data used by the parser. |
 | `Makefile` | Build and workflow shortcuts for the HIP executables. |
@@ -94,11 +95,31 @@ python validate_odp.py
 The HIP sources currently compile with `N_COMPANIES=146`, matching the included
 CSV sample after `parse_triangles.py` filters to complete 10x10 triangles.
 
+## LinkedIn Charts
+
+Generate polished PNG charts after running the workflow above:
+
+```bash
+python linkedin_charts.py --outdir linkedin_charts
+```
+
+To include a measured GPU throughput chart, let the module rerun both HIP
+bootstrap executables and parse their timings:
+
+```bash
+python linkedin_charts.py --benchmark --outdir linkedin_charts
+```
+
+The chart set includes a GPU thread-grid heatmap, throughput bars, calibration
+lift, portfolio reserve stack, ODP reserve distributions, and uncertainty
+diagnostics.
+
 ## Generated Artifacts
 
 Generated binary inputs, bootstrap sample files, validation CSVs, compiled
-executables, Python caches, and local virtual environments are intentionally
-ignored by Git. Regenerate them locally with the workflow above.
+executables, generated chart images, Python caches, and local virtual
+environments are intentionally ignored by Git. Regenerate them locally with the
+workflow above.
 
 ## Notes
 
