@@ -1,13 +1,13 @@
 """
-LinkedIn-ready visualizations for the Blitz GPU reserving project.
+Portfolio visualizations for the Blitz GPU reserving project.
 
-The module reads the generated Blitz artifacts and produces polished PNG charts
-that highlight the GPU workload mapping, throughput, reserve calibration, and
-portfolio uncertainty story.
+The module reads generated Blitz artifacts and produces PNG charts that
+highlight GPU workload mapping, throughput, reserve calibration, and portfolio
+uncertainty.
 
 Typical usage:
-    python linkedin_charts.py --outdir linkedin_charts
-    python linkedin_charts.py --benchmark --outdir linkedin_charts
+    python reserve_charts.py --outdir docs/charts
+    python reserve_charts.py --benchmark --outdir docs/charts
 """
 
 from __future__ import annotations
@@ -649,7 +649,7 @@ def generate_charts(root: Path, outdir: Path, dpi: int, run_benchmark: bool) -> 
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate LinkedIn-ready Blitz charts.")
+    parser = argparse.ArgumentParser(description="Generate Blitz reserve-model charts.")
     parser.add_argument(
         "--root",
         type=Path,
@@ -659,7 +659,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--outdir",
         type=Path,
-        default=ROOT / "linkedin_charts",
+        default=ROOT / "docs" / "charts",
         help="Directory where PNG charts will be written.",
     )
     parser.add_argument(

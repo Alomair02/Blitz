@@ -27,7 +27,7 @@ ibnr_validation.csv
 ibnr_odp_validation.csv
 data/
 results/
-linkedin_charts/
+docs/charts/gpu_benchmark.csv
 
 # Scratch or legacy generated market-data artifacts
 returns.bin

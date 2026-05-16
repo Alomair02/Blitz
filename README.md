@@ -29,7 +29,7 @@ GPU parallelism, and reproducible reserve validation.
 | `ibnr_bootstrap_odp.hip` | Overdispersed Poisson bootstrap kernel with residual resampling. |
 | `validate_ibnr.py` | Validates naive bootstrap samples against realized lower-triangle outcomes. |
 | `validate_odp.py` | Validates ODP bootstrap samples and reports reserve adequacy metrics. |
-| `linkedin_charts.py` | Produces polished Matplotlib/Seaborn charts for portfolio posts. |
+| `reserve_charts.py` | Produces Matplotlib/Seaborn charts for the README and portfolio documentation. |
 | `rng_test.hip` | Small ROCm random-number sanity check. |
 | `ppauto.csv`, `comauto.csv` | Source Schedule P auto-line triangle data used by the parser. |
 | `Makefile` | Build and workflow shortcuts for the HIP executables. |
@@ -95,24 +95,39 @@ python validate_odp.py
 The HIP sources currently compile with `N_COMPANIES=146`, matching the included
 CSV sample after `parse_triangles.py` filters to complete 10x10 triangles.
 
-## LinkedIn Charts
+## Results
 
-Generate polished PNG charts after running the workflow above:
+The charts below summarize the GPU workload, reserve calibration, portfolio
+reserve stack, and model uncertainty diagnostics.
+
+![GPU thread grid](docs/charts/01_gpu_thread_grid.png)
+
+![GPU throughput](docs/charts/02_gpu_throughput.png)
+
+![Reserve calibration lift](docs/charts/03_calibration_lift.png)
+
+![Portfolio reserve stack](docs/charts/04_portfolio_reserve_stack.png)
+
+![ODP reserve distributions](docs/charts/05_odp_reserve_distributions.png)
+
+![Uncertainty diagnostics](docs/charts/06_uncertainty_diagnostics.png)
+
+Regenerate the chart PNGs after running the workflow above:
 
 ```bash
-python linkedin_charts.py --outdir linkedin_charts
+python reserve_charts.py --outdir docs/charts
 ```
 
 To include a measured GPU throughput chart, let the module rerun both HIP
 bootstrap executables and parse their timings:
 
 ```bash
-python linkedin_charts.py --benchmark --outdir linkedin_charts
+python reserve_charts.py --benchmark --outdir docs/charts
 ```
 
-The chart set includes a GPU thread-grid heatmap, throughput bars, calibration
-lift, portfolio reserve stack, ODP reserve distributions, and uncertainty
-diagnostics.
+The generated chart set can include a GPU thread-grid heatmap, throughput bars,
+calibration lift, portfolio reserve stack, ODP reserve distributions, and
+uncertainty diagnostics.
 
 ## Generated Artifacts
 
